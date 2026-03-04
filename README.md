@@ -1,9 +1,24 @@
 # LLM Text Watermarking Reproduction
-This project reproduces the watermarking method proposed in the paper  
-"A Watermark for Large Language Models".
-The goal is to test whether AI-generated text can contain a detectable watermark.
-The experiment generates text with and without watermarking.
-A statistical detector is used to identify whether the watermark is present.
-The project also tests whether paraphrasing can weaken or remove the watermark signal.
-Tools used: Python, PyTorch, HuggingFace Transformers, and GPT-2.
-Experiments were run in Google Colab.
+
+reproduction of the watermarking method from the paper  
+"A watermark for Large Language Models" (Kirchenbauer et al., 2023).
+
+The experiment evaluates whether AI-generated text contains a detectable watermark signal and how robust the watermark is against simple attacks such as paraphrasing.
+
+Setup:
+Python, PyTorch, HuggingFace Transformers  
+Model: GPT-2  
+Environment: Google Colab (GPU)
+
+Procedure:
+1. Generate text normally (no watermark).
+2. Generate text using the watermark processor.
+3. Run the statistical detector on the generated tokens.
+4. Apply a paraphrasing attack and test the detector again.
+
+The detector measures the green-token fraction and computes a z-score to determine whether the text is watermarked.
+
+Example result:
+
+Prediction: Watermarked  
+z-score: 13.1
